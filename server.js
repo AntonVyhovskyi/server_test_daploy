@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors')
 const { Pool } = require('pg');
+require('dotenv').config()
 
 
 const app = express();
@@ -8,7 +9,7 @@ app.use(express.json());
 app.use(cors())
 
 const pool = new Pool({
-    connectionString: 'postgresql://postgress:KQGMMpbmyKdtPXzzQKbq3167tLNH6cdQ@dpg-d184u5adbo4c73dah1fg-a.frankfurt-postgres.render.com/dbbibliotec',
+    connectionString: process.env.DATABASE_URL,
     ssl: {
         rejectUnauthorized: false, // важливо для Render або Railway
     },
